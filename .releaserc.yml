@@ -1,0 +1,30 @@
+branch: master
+tagFormat: '${version}'
+
+verifyConditions:
+  - path: &npm '@semantic-release/npm'
+    pkgRoot: '.'
+  - &gh '@semantic-release/github'
+
+prepare:
+  - '@semantic-release/changelog'
+  - *npm
+  - path: '@semantic-release/git'
+    message: 'chore(release): ${nextRelease.version}'
+    assets:
+      - CHANGELOG.md
+      - README.md
+      - package.json
+      - yarn.lock
+  - path: &exec '@semantic-release/exec'
+    cmd: yarn run rollup --declaration
+  - path: *exec
+    cmd: node postbuild.js
+
+publish:
+  - path: *exec
+    cmd: bash -c "cd dist && npm publish"
+  - *gh
+
+generateNotes:
+  config: '@alorel-personal/conventional-changelog-alorel'
