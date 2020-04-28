@@ -1,6 +1,6 @@
 {
   "name": "@alorel/rollup-plugin-fast-tsc",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "A faster typescript plugin for rollup",
   "main": "index.js",
   "repository": "https://github.com/Alorel/rollup-plugin-fast-tsc.git",
