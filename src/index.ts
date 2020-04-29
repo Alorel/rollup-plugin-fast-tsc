@@ -17,6 +17,12 @@ interface Opts {
    */
   mainPath?: string;
 
+  /**
+   * Tsconfig path
+   * @default tsconfig.json
+   */
+  tsconfig?: string;
+
   /** Whether we're operating in watch mode */
   watch?: boolean;
 }
@@ -25,6 +31,7 @@ function plugin(opts: Opts = {}): Plugin {
   const {
     extraCliArgs = [],
     mainPath = process.cwd(),
+    tsconfig,
     watch = false
   } = opts;
 
@@ -38,7 +45,7 @@ function plugin(opts: Opts = {}): Plugin {
     '--outDir'
   ];
 
-  let done: Promise<void> = init(mainPath)
+  let done: Promise<void> = init(mainPath, tsconfig)
     .then(({dir, config}) => {
       loaderFn = resolveLoader(extraCliArgs.includes('--sourceMap') || config.options.sourceMap);
       args.push(tmpDirPath = dir);

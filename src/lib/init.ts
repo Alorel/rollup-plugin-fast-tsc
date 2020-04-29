@@ -9,10 +9,10 @@ export interface InitResponse {
 }
 
 /** @internal */
-export function init(mainPath: string): Promise<InitResponse> {
+export function init(mainPath: string, configName?: string): Promise<InitResponse> {
   return tmpDir()
     .then<InitResponse>(dir => {
-      const fileName = ts.findConfigFile(mainPath, ts.sys.fileExists); //tslint:disable-line:no-unbound-method
+      const fileName = ts.findConfigFile(mainPath, ts.sys.fileExists, configName); //tslint:disable-line:no-unbound-method max-line-length
       if (!fileName) {
         throw new Error('tsconfig not found');
       }
