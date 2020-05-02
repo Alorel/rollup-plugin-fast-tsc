@@ -1,3 +1,15 @@
+# [2.0.0-alpha.1](https://github.com/Alorel/rollup-plugin-fast-tsc/compare/1.1.0...2.0.0-alpha.1) (2020-05-02)
+
+
+### Bug Fixes
+
+* Fixed weird behaviours, made the plugin into a simple spawn wrapper ([fbcbb40](https://github.com/Alorel/rollup-plugin-fast-tsc/commit/fbcbb407ca04ee3b6517e0951c38be911fefea79))
+
+
+### BREAKING CHANGES
+
+* Plugin config changed, see updated typings
+
 # [1.1.0](https://github.com/Alorel/rollup-plugin-fast-tsc/compare/1.0.0...1.1.0) (2020-04-29)
 
 
